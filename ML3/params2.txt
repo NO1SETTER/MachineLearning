@@ -1,0 +1,120 @@
+Epochs:1 Learning Rate:0.0010 Average Loss:0.00209121
+ Train_accuracy:0.96080000 Test accuracy:0.98660000
+---------------------------
+Epochs:2 Learning Rate:0.0010 Average Loss:0.00145395
+ Train_accuracy:0.98458333 Test accuracy:0.98930000
+---------------------------
+Epochs:3 Learning Rate:0.0010 Average Loss:0.00116413
+ Train_accuracy:0.98893333 Test accuracy:0.98760000
+---------------------------
+Epochs:4 Learning Rate:0.0010 Average Loss:0.00098979
+ Train_accuracy:0.99148333 Test accuracy:0.99150000
+---------------------------
+Epochs:5 Learning Rate:0.0010 Average Loss:0.00086699
+ Train_accuracy:0.99288333 Test accuracy:0.99030000
+---------------------------
+Epochs:6 Learning Rate:0.0010 Average Loss:0.00077321
+ Train_accuracy:0.99408333 Test accuracy:0.99060000
+---------------------------
+Epochs:7 Learning Rate:0.0010 Average Loss:0.00070078
+ Train_accuracy:0.99488333 Test accuracy:0.98790000
+---------------------------
+Epochs:8 Learning Rate:0.0010 Average Loss:0.00063987
+ Train_accuracy:0.99590000 Test accuracy:0.99090000
+---------------------------
+Epochs:1 Learning Rate:0.0020 Average Loss:0.00200322
+ Train_accuracy:0.96340000 Test accuracy:0.98390000
+---------------------------
+Epochs:2 Learning Rate:0.0020 Average Loss:0.00141408
+ Train_accuracy:0.98525000 Test accuracy:0.98590000
+---------------------------
+Epochs:3 Learning Rate:0.0020 Average Loss:0.00113752
+ Train_accuracy:0.98931667 Test accuracy:0.99010000
+---------------------------
+Epochs:4 Learning Rate:0.0020 Average Loss:0.00096765
+ Train_accuracy:0.99148333 Test accuracy:0.98830000
+---------------------------
+Epochs:5 Learning Rate:0.0020 Average Loss:0.00085080
+ Train_accuracy:0.99300000 Test accuracy:0.98820000
+---------------------------
+Epochs:6 Learning Rate:0.0020 Average Loss:0.00076277
+ Train_accuracy:0.99378333 Test accuracy:0.98640000
+---------------------------
+Epochs:7 Learning Rate:0.0020 Average Loss:0.00069026
+ Train_accuracy:0.99545000 Test accuracy:0.99150000
+---------------------------
+Epochs:8 Learning Rate:0.0020 Average Loss:0.00063550
+ Train_accuracy:0.99558333 Test accuracy:0.99240000
+---------------------------
+Epochs:1 Learning Rate:0.0030 Average Loss:0.00213748
+ Train_accuracy:0.96026667 Test accuracy:0.98500000
+---------------------------
+Epochs:2 Learning Rate:0.0030 Average Loss:0.00149200
+ Train_accuracy:0.98556667 Test accuracy:0.98520000
+---------------------------
+Epochs:3 Learning Rate:0.0030 Average Loss:0.00119796
+ Train_accuracy:0.98905000 Test accuracy:0.98660000
+---------------------------
+Epochs:4 Learning Rate:0.0030 Average Loss:0.00102878
+ Train_accuracy:0.99021667 Test accuracy:0.98690000
+---------------------------
+Epochs:5 Learning Rate:0.0030 Average Loss:0.00091021
+ Train_accuracy:0.99236667 Test accuracy:0.98860000
+---------------------------
+Epochs:6 Learning Rate:0.0030 Average Loss:0.00081947
+ Train_accuracy:0.99370000 Test accuracy:0.99080000
+---------------------------
+Epochs:7 Learning Rate:0.0030 Average Loss:0.00074397
+ Train_accuracy:0.99491667 Test accuracy:0.99040000
+---------------------------
+Epochs:8 Learning Rate:0.0030 Average Loss:0.00068552
+ Train_accuracy:0.99515000 Test accuracy:0.98940000
+---------------------------
+Epochs:1 Learning Rate:0.0040 Average Loss:0.00274835
+ Train_accuracy:0.94806667 Test accuracy:0.98560000
+---------------------------
+Epochs:2 Learning Rate:0.0040 Average Loss:0.00180224
+ Train_accuracy:0.98490000 Test accuracy:0.98610000
+---------------------------
+Epochs:3 Learning Rate:0.0040 Average Loss:0.00142200
+ Train_accuracy:0.98801667 Test accuracy:0.98550000
+---------------------------
+Epochs:4 Learning Rate:0.0040 Average Loss:0.00120819
+ Train_accuracy:0.98993333 Test accuracy:0.98980000
+---------------------------
+Epochs:5 Learning Rate:0.0040 Average Loss:0.00105791
+ Train_accuracy:0.99188333 Test accuracy:0.99030000
+---------------------------
+Epochs:6 Learning Rate:0.0040 Average Loss:0.00094726
+ Train_accuracy:0.99316667 Test accuracy:0.98980000
+---------------------------
+Epochs:7 Learning Rate:0.0040 Average Loss:0.00086468
+ Train_accuracy:0.99380000 Test accuracy:0.99030000
+---------------------------
+Epochs:8 Learning Rate:0.0040 Average Loss:0.00079925
+ Train_accuracy:0.99410000 Test accuracy:0.99010000
+---------------------------
+Epochs:1 Learning Rate:0.0050 Average Loss:0.00260564
+ Train_accuracy:0.95406667 Test accuracy:0.98350000
+---------------------------
+Epochs:2 Learning Rate:0.0050 Average Loss:0.00176069
+ Train_accuracy:0.98441667 Test accuracy:0.98810000
+---------------------------
+Epochs:3 Learning Rate:0.0050 Average Loss:0.00141309
+ Train_accuracy:0.98781667 Test accuracy:0.98640000
+---------------------------
+Epochs:4 Learning Rate:0.0050 Average Loss:0.00119936
+ Train_accuracy:0.99040000 Test accuracy:0.98680000
+---------------------------
+Epochs:5 Learning Rate:0.0050 Average Loss:0.00105953
+ Train_accuracy:0.99148333 Test accuracy:0.98950000
+---------------------------
+Epochs:6 Learning Rate:0.0050 Average Loss:0.00095479
+ Train_accuracy:0.99240000 Test accuracy:0.98900000
+---------------------------
+Epochs:7 Learning Rate:0.0050 Average Loss:0.00088121
+ Train_accuracy:0.99256667 Test accuracy:0.98700000
+---------------------------
+Epochs:8 Learning Rate:0.0050 Average Loss:0.00081625
+ Train_accuracy:0.99371667 Test accuracy:0.98910000
+---------------------------
