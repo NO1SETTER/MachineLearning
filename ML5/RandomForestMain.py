@@ -89,12 +89,12 @@ def CrossValidation(train_attr, train_label, test_attr, test_label):
 
 train_data = []
 test_data = []
-with open('adult_data.csv') as t1:
+with open('./data/adult_data.csv') as t1:
     reader = csv.reader(t1)
     for row in reader:
         train_data.append(row)
 
-with open('adult_test.csv') as t2:
+with open('./data/adult_test.csv') as t2:
     reader = csv.reader(t2)
 
     for row in reader:
