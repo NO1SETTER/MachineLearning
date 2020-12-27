@@ -9,18 +9,17 @@ from sklearn.model_selection import KFold
 from sklearn.impute import SimpleImputer
 
 
-def RandomForest(train_attr, train_label):
+def RandomForest(train_attr, train_label, rounds):
     samplenum = len(train_label)
-    rounds = 20
     trees = []
     for round in range(rounds):
         temp_train_attr = []
         temp_train_label = []
-        for i in range(samplenum):
+        for i in range(samplenum):  # 随机采样,可能重读
             row = random.randint(0, samplenum-1)
             temp_train_attr.append(train_attr[row])
             temp_train_label.append(train_label[row])
-        dectree = DecisionTreeClassifier(max_depth=10, max_features='log2')
+        dectree = DecisionTreeClassifier(max_depth=10, max_features='log2',random_state=3)
         dectree.fit(temp_train_attr, temp_train_label)
         trees.append(dectree)
     return trees
@@ -39,15 +38,16 @@ def CalculateAUC(test_attr, test_label, trees):
         elif vote_result[i] < 0:
             vote_result[i] = -1
         else:
-            vote_result[i] = random.choice([-1,1])
+            vote_result[i] = random.choice([-1, 1])
 
     rightpreds = 0
     for i in range(samplenum):
         if vote_result[i] == test_label[i]:
             rightpreds += 1
-    print("TrainCorrectTate:"+str(rightpreds/samplenum))
+    correct_rate = rightpreds/samplenum
+    print("TrainCorrectTate:"+str(correct_rate))
     fpr, tpr, threshold = roc_curve(vote_result, test_label)
-    return  auc(fpr,tpr)
+    return auc(fpr, tpr), correct_rate
 
 
 def TestOnTestSet(test_attr, test_label, trees):
@@ -69,22 +69,36 @@ def TestOnTestSet(test_attr, test_label, trees):
     for i in range(samplenum):
         if vote_result[i] == test_label[i]:
             rightpreds += 1
-    print("TrainCorrectTate:"+str(rightpreds/samplenum))
+    correct_rate = rightpreds/samplenum
+    #print("TrainCorrectTate:"+str(correct_rate))
+    return correct_rate
 
 
 def CrossValidation(train_attr, train_label, test_attr, test_label):
+    rounds = 17
     auc_val = 0
+    test_correct_rate = 0
+    train_correct_rate = 0
     kf = KFold(5)
     folds = 0
     for train_index, test_index in kf.split(train_attr):
+        print('------------------------------------')
         print("Fold:"+str(folds+1))
         x_train, x_test = train_attr[train_index], train_attr[test_index]
         y_train, y_test = train_label[train_index], train_label[test_index]
-        trees = RandomForest(x_train, y_train)
-        auc_val += CalculateAUC(x_test, y_test, trees)
+        trees = RandomForest(x_train, y_train, rounds)
+        ret1, ret2 = CalculateAUC(x_test, y_test, trees)
+        auc_val += ret1
+        test_correct_rate += ret2
         folds = folds + 1
-        TestOnTestSet(test_attr, test_label, trees)
+        train_correct_rate += TestOnTestSet(test_attr, test_label, trees)
         print("auc_val="+str(auc_val/folds))
+    print('------------------------------------')
+    print('Sum:')
+    print('Best BaseLearner Number:'+str(rounds))
+    print('Auc:'+str(auc_val/5))
+    #print('TrainCorrectRate:'+str(test_correct_rate/5))
+    print('TestCorrectTate:'+str(train_correct_rate/5))
 
 
 train_data = []

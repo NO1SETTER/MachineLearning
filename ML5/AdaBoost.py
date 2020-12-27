@@ -8,8 +8,8 @@ from sklearn.model_selection import KFold
 from sklearn.impute import SimpleImputer
 
 
-def AdaBoost(train_attr, train_label):
-    rounds = 10
+def AdaBoost(train_attr, train_label, rounds):
+    rounds = 30
     sampleNum = len(train_label)
     D = []
     allTree = []
@@ -21,7 +21,7 @@ def AdaBoost(train_attr, train_label):
                 w[i] = 1 / sampleNum
         else:
             w = D[round - 1]
-        decTree = DecisionTreeClassifier(max_depth=2)
+        decTree = DecisionTreeClassifier(max_depth=3)
         decTree.fit(train_attr, train_label, sample_weight=w)
         pred = decTree.predict(train_attr)
         error = float(0)
@@ -57,10 +57,10 @@ def CalculateAUC(test_attr, test_label, trees, Alpha):
     for i in range(len(weighted_pred)):
         if weighted_pred[i] == test_label[i]:
             rightpreds += 1
-    print("TrainCorrectRate:" + str(rightpreds / len(weighted_pred)))
-
+    correct_rate = rightpreds / len(weighted_pred)
+    #print("TrainCorrectRate:" + str(correct_rate))
     fpr, tpr, thresholds = roc_curve(weighted_pred, test_label)
-    return auc(fpr, tpr)
+    return auc(fpr, tpr), correct_rate
 
 
 def TestOnTestSet(test_attr, test_label, trees, Alpha):
@@ -81,22 +81,37 @@ def TestOnTestSet(test_attr, test_label, trees, Alpha):
     for i in range(len(weighted_pred)):
         if weighted_pred[i] == test_label[i]:
             rightpreds += 1
-    print("TestCorrectRate:"+str(rightpreds/len(weighted_pred)))
+    correct_rate = rightpreds/len(weighted_pred)
+    print("TestCorrectRate:"+str(correct_rate))
+    return correct_rate
 
 
 def CrossValidation(train_attr, train_label, test_attr, test_label):
+    rounds = 50
     auc_val = 0
+    test_correct_rate = 0
+    train_correct_rate = 0
     kf = KFold(5)
     folds = 0
     for train_index, test_index in kf.split(train_attr):
+        print('------------------------------------')
         print("Fold:"+str(folds+1))
         x_train, x_test = train_attr[train_index], train_attr[test_index]
         y_train, y_test = train_label[train_index], train_label[test_index]
-        trees, weights = AdaBoost(x_train, y_train)
-        auc_val += CalculateAUC(x_test, y_test, trees, weights)
+        trees, weights = AdaBoost(x_train, y_train, rounds)
+        ret1, ret2 = CalculateAUC(x_test, y_test, trees, weights)
+        auc_val += ret1
+        test_correct_rate += ret2
         folds = folds + 1
-        TestOnTestSet(test_attr, test_label, trees, weights)
+        train_correct_rate += TestOnTestSet(test_attr, test_label, trees, weights)
         print("auc_val="+str(auc_val/folds))
+    print('------------------------------------')
+    print('Sum:')
+    print('Best BaseLearner Number:'+str(rounds))
+    print('Auc:'+str(auc_val/5))
+    #print('TrainCorrectRate:'+str(test_correct_rate/5))
+    print('TestCorrectTate:'+str(train_correct_rate/5))
+
 
 
 train_data = []
