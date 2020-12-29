@@ -9,7 +9,7 @@ from sklearn.impute import SimpleImputer
 
 
 def AdaBoost(train_attr, train_label, rounds):
-    rounds = 30
+    rounds = 17
     sampleNum = len(train_label)
     D = []
     allTree = []
@@ -58,7 +58,7 @@ def CalculateAUC(test_attr, test_label, trees, Alpha):
         if weighted_pred[i] == test_label[i]:
             rightpreds += 1
     correct_rate = rightpreds / len(weighted_pred)
-    #print("TrainCorrectRate:" + str(correct_rate))
+    # print("TrainCorrectRate:" + str(correct_rate))
     fpr, tpr, thresholds = roc_curve(weighted_pred, test_label)
     return auc(fpr, tpr), correct_rate
 
@@ -109,7 +109,7 @@ def CrossValidation(train_attr, train_label, test_attr, test_label):
     print('Sum:')
     print('Best BaseLearner Number:'+str(rounds))
     print('Auc:'+str(auc_val/5))
-    #print('TrainCorrectRate:'+str(test_correct_rate/5))
+    # print('TrainCorrectRate:'+str(test_correct_rate/5))
     print('TestCorrectTate:'+str(train_correct_rate/5))
 
 

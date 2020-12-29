@@ -45,7 +45,7 @@ def CalculateAUC(test_attr, test_label, trees):
         if vote_result[i] == test_label[i]:
             rightpreds += 1
     correct_rate = rightpreds/samplenum
-    print("TrainCorrectTate:"+str(correct_rate))
+    # print("TrainCorrectTate:"+str(correct_rate))
     fpr, tpr, threshold = roc_curve(vote_result, test_label)
     return auc(fpr, tpr), correct_rate
 
@@ -70,12 +70,12 @@ def TestOnTestSet(test_attr, test_label, trees):
         if vote_result[i] == test_label[i]:
             rightpreds += 1
     correct_rate = rightpreds/samplenum
-    #print("TrainCorrectTate:"+str(correct_rate))
+    print("TestCorrectTate:"+str(correct_rate))
     return correct_rate
 
 
 def CrossValidation(train_attr, train_label, test_attr, test_label):
-    rounds = 17
+    rounds = 23
     auc_val = 0
     test_correct_rate = 0
     train_correct_rate = 0
@@ -97,7 +97,7 @@ def CrossValidation(train_attr, train_label, test_attr, test_label):
     print('Sum:')
     print('Best BaseLearner Number:'+str(rounds))
     print('Auc:'+str(auc_val/5))
-    #print('TrainCorrectRate:'+str(test_correct_rate/5))
+    # print('TrainCorrectRate:'+str(test_correct_rate/5))
     print('TestCorrectTate:'+str(train_correct_rate/5))
 
 
@@ -163,4 +163,4 @@ test_attr = test_data[:, 0:-1]
 test_label = test_data[:, -1]
 
 
-CrossValidation(train_attr,train_label,test_attr,test_label)
+CrossValidation(train_attr, train_label, test_attr, test_label)
